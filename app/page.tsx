@@ -9,7 +9,7 @@ const LIGHT_GRAY = "#f8fafc";
 
 export default function HomePage() {
   return (
-    <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+    <section className="relative w-full mt-16 h-screen overflow-hidden flex items-center justify-center">
       {/* Background Video */}
       <video
         autoPlay
