@@ -5,11 +5,27 @@ import { ChevronDown, ChevronRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Poppins, Inter } from 'next/font/google';
+
+// Configure Google Fonts
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+
+const inter = Inter({
+  weight: ['400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";
 const BG = "#ffffff";
-const GRAY = "#64748b";
+const YELLOW = "#fbbf24";
 const LIGHT_GRAY = "#f8fafc";
 const DARK_GRAY = "#334155";
 
@@ -20,13 +36,25 @@ export default function Header() {
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+      
+      // Close dropdowns when scrolling
+      if (isScrolled) {
+        setActiveDropdown(null);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = drawerOpen ? "hidden" : "unset";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [drawerOpen]);
 
   const servicesItems = [
@@ -60,50 +88,58 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100, damping: 25 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "backdrop-blur-xl" : ""
-        }`}
+          scrolled ? "backdrop-blur-xl shadow-2xl" : "backdrop-blur-sm"
+        } ${poppins.variable} ${inter.variable} font-sans`}
         style={{
-          background: scrolled
-            ? "rgba(255,255,255,0.92)"
-            : "rgba(255,255,255,0.98)",
-          boxShadow: scrolled
-            ? "0 4px 32px rgba(30,58,138,0.08), 0 1px 3px rgba(0,0,0,0.04)"
-            : "0 1px 3px rgba(0,0,0,0.02)",
+          backgroundColor: scrolled
+            ? "rgba(30, 58, 138, 0.95)" // Much darker and more opaque when scrolled
+            : "rgba(255, 255, 255, 0.98)",
           borderBottom: scrolled
-            ? `1px solid rgba(30,58,138,0.08)`
-            : "1px solid rgba(226,232,240,0.4)",
+            ? `1px solid rgba(30, 58, 138, 0.2)`
+            : "1px solid rgba(226, 232, 240, 0.6)",
         }}
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-[72px]">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group relative z-10">
+            <Link
+              href="/"
+              className="flex items-center gap-3 group relative z-10"
+              onClick={() => setDrawerOpen(false)}
+            >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.96 }}
-                className="relative w-10 h-10"
+                className="relative w-10 h-10 lg:w-12 lg:h-12"
               >
                 <Image
                   src="/Images/Logo.png"
                   alt="ByteSolve Logo"
-                  fill
+                  width={150}
+                  height={150}
                   className="object-contain"
-                  priority
+                  style={{
+                    filter: scrolled 
+                      ? "brightness(0) invert(1) drop-shadow(0 1px 2px rgba(0,0,0,0.1))"
+                      : "drop-shadow(0 1px 2px rgba(0,0,0,0.05))",
+                  }}
                 />
               </motion.div>
               <div className="flex flex-col leading-none">
                 <span
-                  style={{ color: PRIMARY }}
-                  className="font-bold text-[22px] tracking-tight"
+                  className={`font-bold text-xl lg:text-2xl tracking-tight transition-colors duration-300 font-poppins ${
+                    scrolled ? "text-white" : "text-blue-900"
+                  }`}
                 >
                   ByteSolve
                 </span>
                 <span
-                  style={{ color: GRAY }}
-                  className="text-[9px] font-medium tracking-wider uppercase mt-0.5"
+                  className={`text-[10px] lg:text-xs font-medium tracking-wider uppercase transition-colors duration-300 font-inter ${
+                    scrolled ? "text-blue-100" : "text-slate-500"
+                  }`}
                 >
                   Software Solutions
                 </span>
@@ -111,7 +147,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-1 font-inter">
               {navLinks.map((link) => (
                 <div
                   key={link.href}
@@ -124,8 +160,10 @@ export default function Header() {
                   <Link href={link.href}>
                     <motion.div
                       whileHover={{ y: -1 }}
-                      className="relative px-4 py-2.5 font-medium text-[14px] tracking-wide group cursor-pointer flex items-center gap-1.5"
-                      style={{ color: DARK_GRAY }}
+                      className="relative px-4 py-2.5 font-medium text-sm tracking-wide group cursor-pointer flex items-center gap-1.5 transition-colors duration-200 font-inter"
+                      style={{ 
+                        color: scrolled ? BG : DARK_GRAY 
+                      }}
                     >
                       {link.label}
                       {link.dropdown && (
@@ -137,12 +175,15 @@ export default function Header() {
                               activeDropdown === link.label
                                 ? "rotate(180deg)"
                                 : "rotate(0deg)",
+                            color: scrolled ? BG : DARK_GRAY,
                           }}
                         />
                       )}
                       <span
-                        className="absolute left-4 right-4 bottom-0 h-[2px] w-0 group-hover:w-[calc(100%-32px)] transition-all duration-300"
-                        style={{ backgroundColor: ACCENT }}
+                        className="absolute left-4 right-4 bottom-0 h-0.5 w-0 group-hover:w-[calc(100%-32px)] transition-all duration-300"
+                        style={{ 
+                          backgroundColor: scrolled ? YELLOW : ACCENT 
+                        }}
                       ></span>
                     </motion.div>
                   </Link>
@@ -156,10 +197,9 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           exit={{ opacity: 0, y: 10, scale: 0.95 }}
                           transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="absolute top-full left-0 mt-2 w-64 rounded-xl shadow-2xl overflow-hidden"
+                          className="absolute top-full left-0 mt-1 w-64 rounded-xl shadow-2xl border border-slate-200 overflow-hidden font-inter"
                           style={{
                             background: BG,
-                            border: `1px solid ${LIGHT_GRAY}`,
                           }}
                         >
                           <div className="py-2">
@@ -177,7 +217,7 @@ export default function Header() {
                                     backgroundColor: LIGHT_GRAY,
                                     x: 4,
                                   }}
-                                  className="px-5 py-3 text-[13px] font-medium transition-colors"
+                                  className="px-5 py-3 text-sm font-medium transition-colors duration-200 hover:text-blue-700 font-inter"
                                   style={{ color: DARK_GRAY }}
                                 >
                                   {item.label}
@@ -193,21 +233,23 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex items-center gap-3 font-inter">
               <Link href="/contact">
                 <motion.button
                   whileHover={{
                     scale: 1.04,
-                    boxShadow: `0 8px 24px rgba(30,58,138,0.2)`,
+                    boxShadow: scrolled 
+                      ? "0 8px 24px rgba(251, 191, 36, 0.3)"
+                      : "0 8px 24px rgba(30, 58, 138, 0.2)",
                   }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="px-6 py-2.5 rounded-lg font-semibold text-[13px] tracking-wide transition-all"
+                  className="px-6 py-2.5 rounded-lg font-semibold text-sm tracking-wide transition-all duration-200 border-2 font-inter"
                   style={{
-                    background: BG,
-                    color: PRIMARY,
-                    border: `1.5px solid ${PRIMARY}`,
+                    background: scrolled ? "transparent" : BG,
+                    color: scrolled ? YELLOW : PRIMARY,
+                    borderColor: scrolled ? YELLOW : PRIMARY,
                   }}
                 >
                   Let&apos;s Talk
@@ -217,14 +259,16 @@ export default function Header() {
                 <motion.button
                   whileHover={{
                     scale: 1.04,
-                    boxShadow: `0 8px 24px ${ACCENT}40`,
+                    boxShadow: `0 8px 24px rgba(179, 1, 1, 0.3)`,
                   }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="px-6 py-2.5 rounded-lg font-semibold text-[13px] tracking-wide shadow-lg transition-all"
+                  className="px-6 py-2.5 rounded-lg font-semibold text-sm tracking-wide transition-all duration-200 font-inter"
                   style={{
-                    background: `linear-gradient(135deg, ${ACCENT} 0%, ${PRIMARY} 100%)`,
-                    color: BG,
+                    background: scrolled 
+                      ? `linear-gradient(135deg, ${YELLOW} 0%, #f59e0b 100%)`
+                      : `linear-gradient(135deg, ${ACCENT} 0%, ${PRIMARY} 100%)`,
+                    color: scrolled ? PRIMARY : BG,
                   }}
                 >
                   Get Quote
@@ -237,10 +281,10 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setDrawerOpen(true)}
-              className="lg:hidden p-2.5 rounded-lg"
+              className="lg:hidden p-2.5 rounded-lg transition-colors duration-200 font-inter"
               style={{
-                color: PRIMARY,
-                background: LIGHT_GRAY,
+                color: scrolled ? BG : PRIMARY,
+                background: scrolled ? "rgba(255,255,255,0.1)" : LIGHT_GRAY,
               }}
               aria-label="Open menu"
             >
@@ -266,36 +310,25 @@ export default function Header() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 35, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-[340px] max-w-[88vw] z-[70] shadow-2xl"
-              style={{
-                background: BG,
-              }}
+              className="fixed top-0 right-0 bottom-0 w-full max-w-sm z-[70] shadow-2xl bg-white flex flex-col font-sans"
             >
               {/* Drawer Header */}
-              <div
-                className="flex items-center justify-between px-6 py-5 border-b"
-                style={{ borderColor: "#e2e8f0" }}
-              >
+              <div className="flex items-center justify-between px-6 py-5 border-b border-slate-200">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-9 h-9">
+                  <div className="relative w-10 h-10">
                     <Image
                       src="/Images/Logo.png"
                       alt="ByteSolve Logo"
-                      fill
+                      width={150}
+                      height={150}
                       className="object-contain"
                     />
                   </div>
                   <div className="flex flex-col leading-none">
-                    <span
-                      style={{ color: PRIMARY }}
-                      className="font-bold text-lg"
-                    >
+                    <span className="font-bold text-xl text-blue-900 font-poppins">
                       ByteSolve
                     </span>
-                    <span
-                      style={{ color: GRAY }}
-                      className="text-[8px] font-medium tracking-wider uppercase"
-                    >
+                    <span className="text-[10px] font-medium tracking-wider uppercase text-slate-500 font-inter">
                       Software Solutions
                     </span>
                   </div>
@@ -303,18 +336,14 @@ export default function Header() {
                 <motion.button
                   whileTap={{ scale: 0.9, rotate: 90 }}
                   onClick={() => setDrawerOpen(false)}
-                  className="p-2 rounded-lg"
-                  style={{
-                    color: PRIMARY,
-                    background: LIGHT_GRAY,
-                  }}
+                  className="p-2 rounded-lg bg-slate-100 text-slate-700 font-inter"
                 >
                   <X size={20} strokeWidth={2.5} />
                 </motion.button>
               </div>
 
               {/* Drawer Nav */}
-              <div className="px-4 py-4 overflow-y-auto h-[calc(100%-200px)]">
+              <div className="flex-1 overflow-y-auto px-4 py-4 font-inter">
                 {navLinks.map((link, i) => (
                   <motion.div
                     key={link.href}
@@ -324,13 +353,13 @@ export default function Header() {
                     className="mb-1"
                   >
                     {!link.dropdown ? (
-                      <Link href={link.href} onClick={() => setDrawerOpen(false)}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setDrawerOpen(false)}
+                      >
                         <motion.div
                           whileTap={{ scale: 0.98 }}
-                          className="flex items-center justify-between px-4 py-3.5 rounded-lg font-medium text-[14px]"
-                          style={{
-                            color: DARK_GRAY,
-                          }}
+                          className="flex items-center justify-between px-4 py-3.5 rounded-lg font-medium text-base text-slate-700 hover:bg-slate-50 hover:text-blue-700 transition-colors duration-200 font-inter"
                         >
                           <span>{link.label}</span>
                         </motion.div>
@@ -344,20 +373,16 @@ export default function Header() {
                               mobileDropdown === link.label ? null : link.label
                             )
                           }
-                          className="flex items-center justify-between px-4 py-3.5 rounded-lg font-medium text-[14px] cursor-pointer"
-                          style={{
-                            color: DARK_GRAY,
-                          }}
+                          className="flex items-center justify-between px-4 py-3.5 rounded-lg font-medium text-base text-slate-700 hover:bg-slate-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer font-inter"
                         >
                           <span>{link.label}</span>
                           <motion.div
                             animate={{
-                              rotate:
-                                mobileDropdown === link.label ? 90 : 0,
+                              rotate: mobileDropdown === link.label ? 90 : 0,
                             }}
                             transition={{ duration: 0.2 }}
                           >
-                            <ChevronRight size={18} style={{ color: GRAY }} />
+                            <ChevronRight size={18} className="text-slate-500" />
                           </motion.div>
                         </motion.div>
                         <AnimatePresence>
@@ -366,8 +391,8 @@ export default function Header() {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: "auto", opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.25 }}
-                              className="overflow-hidden ml-4"
+                              transition={{ duration: 0.25, ease: "easeInOut" }}
+                              className="overflow-hidden ml-4 border-l-2 border-slate-200"
                             >
                               {link.dropdown.map((item, idx) => (
                                 <Link
@@ -380,8 +405,7 @@ export default function Header() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: idx * 0.03 }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="px-4 py-2.5 rounded-lg text-[13px] font-medium"
-                                    style={{ color: GRAY }}
+                                    className="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-blue-700 transition-colors duration-200 font-inter"
                                   >
                                     {item.label}
                                   </motion.div>
@@ -397,23 +421,12 @@ export default function Header() {
               </div>
 
               {/* Drawer Footer */}
-              <div
-                className="absolute bottom-0 left-0 right-0 p-5 border-t"
-                style={{
-                  background: BG,
-                  borderColor: "#e2e8f0",
-                }}
-              >
+              <div className="border-t border-slate-200 p-5 bg-white font-inter">
                 <div className="flex flex-col gap-3">
                   <Link href="/contact" onClick={() => setDrawerOpen(false)}>
                     <motion.button
                       whileTap={{ scale: 0.97 }}
-                      className="w-full py-3 rounded-lg font-semibold text-[13px] tracking-wide"
-                      style={{
-                        background: BG,
-                        color: PRIMARY,
-                        border: `1.5px solid ${PRIMARY}`,
-                      }}
+                      className="w-full py-3 rounded-lg font-semibold text-sm tracking-wide border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white transition-all duration-200 font-inter"
                     >
                       Let&apos;s Talk
                     </motion.button>
@@ -421,17 +434,13 @@ export default function Header() {
                   <Link href="/get-quote" onClick={() => setDrawerOpen(false)}>
                     <motion.button
                       whileTap={{ scale: 0.97 }}
-                      className="w-full py-3 rounded-lg font-semibold text-[13px] tracking-wide shadow-lg"
-                      style={{
-                        background: `linear-gradient(135deg, ${ACCENT} 0%, ${PRIMARY} 100%)`,
-                        color: BG,
-                      }}
+                      className="w-full py-3 rounded-lg font-semibold text-sm tracking-wide text-white bg-gradient-to-r from-red-600 to-blue-700 hover:shadow-lg transition-all duration-200 font-inter"
                     >
                       Get Quote
                     </motion.button>
                   </Link>
                 </div>
-                <p className="text-center text-[10px] mt-4 font-medium" style={{ color: GRAY }}>
+                <p className="text-center text-xs text-slate-500 mt-4 font-medium font-inter">
                   © 2024 ByteSolve. All rights reserved.
                 </p>
               </div>
