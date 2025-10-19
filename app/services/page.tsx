@@ -7,29 +7,18 @@ import {
   Settings,
   Smartphone,
   TrendingUp,
+  ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";
 const BG = "#ffffff";
-const GRAY = "#64748b";
+// const GRAY = "#64748b";
 const LIGHT_GRAY = "#f8fafc";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
 
 const services = [
   { name: "Web Development", icon: <Code className="w-6 h-6" /> },
@@ -127,7 +116,7 @@ export default function BytesolvePage() {
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed">
-              At Bytesolve, we're dedicated to delivering top-notch digital
+              At Bytesolve, we are dedicated to delivering top-notch digital
               solutions that empower your business to thrive in the digital age.
               Our comprehensive range of services is designed to address the
               evolving needs of modern enterprises. Explore our core offerings
@@ -149,18 +138,22 @@ export default function BytesolvePage() {
                   key={i}
                   href={`/services/${service.name
                     .toLowerCase()
-                    .replace(/\s+/g, "-")}`} // e.g. /services/web-development
+                    .replace(/\s+/g, "-")}`}
                   className="block"
                 >
                   <motion.div
                     whileHover={{ scale: 1.02, x: 5 }}
+                    whileTap={{ scale: 0.97 }}
                     transition={{ type: "spring", stiffness: 150 }}
-                    className="flex items-center gap-3 border border-gray-300 rounded-full px-5 py-3 shadow-sm hover:shadow-md bg-white cursor-pointer"
+                    className="flex items-center justify-between gap-3 border border-gray-300 rounded-full px-5 py-3 shadow-sm hover:shadow-md bg-white cursor-pointer active:bg-gray-100"
                   >
-                    <span className="text-[#b30101]">{service.icon}</span>
-                    <span className="font-semibold text-gray-800">
-                      {service.name.toUpperCase()}
-                    </span>
+                    <div className="flex items-center gap-3">
+                      <span className="text-[#b30101]">{service.icon}</span>
+                      <span className="font-semibold text-gray-800">
+                        {service.name.toUpperCase()}
+                      </span>
+                    </div>
+                    <ChevronRight className="text-gray-400 group-hover:text-[#b30101] transition-colors" />
                   </motion.div>
                 </Link>
               ))}

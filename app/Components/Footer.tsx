@@ -32,9 +32,11 @@ export default function Footer() {
     services: [
       { label: "Web Development", href: "/services/web-development" },
       { label: "App Development", href: "/services/app-development" },
-      { label: "Custom Software", href: "/services/custom-software" },
-      { label: "Web Design", href: "/services/web-design" },
-      { label: "Consultation", href: "/services/consultation" },
+      { label: "Custom Software ", href: "/services/custom-software" },
+      { label: "UI/UX Design", href: "/services/ui-ux-design" },
+      { label: "Digital Marketing", href: "/services/digital-marketing" },
+      { label: "IT Consultation", href: "/services/it-consultation" },
+
     ],
     products: [
       { label: "Salon Software", href: "/products/salon-software" },

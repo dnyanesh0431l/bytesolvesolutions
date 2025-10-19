@@ -61,9 +61,9 @@ export default function Header() {
     { href: "/services/web-development", label: "Web Development" },
     { href: "/services/app-development", label: "App Development" },
     { href: "/services/custom-software", label: "Custom Software Development" },
-    { href: "/services/web-design", label: "Web Design" },
-    { href: "/services/app-design", label: "App Design" },
-    { href: "/services/consultation", label: "Consultation" },
+    { href: "/services/ui-ux-design", label: "UI/UX Design" },
+    { href: "/services/digital-marketing", label: "Digital Marketing" },
+    { href: "/services/it-consultation", label: "IT Consultation" },
   ];
 
   const productsItems = [

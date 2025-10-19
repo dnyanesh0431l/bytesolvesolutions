@@ -5,21 +5,8 @@ import { useRouter } from "next/navigation";
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";
 const BG = "#ffffff";
-const GRAY = "#64748b";
 const LIGHT_GRAY = "#f8fafc";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-};
 
 export default function BytesolvePage() {
   const router = useRouter();
