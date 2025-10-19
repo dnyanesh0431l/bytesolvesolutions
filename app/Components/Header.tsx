@@ -92,7 +92,7 @@ export default function Header() {
         } ${poppins.variable} ${inter.variable} font-sans`}
         style={{
           backgroundColor: scrolled
-            ? "rgba(30, 58, 138, 0.95)" // Much darker and more opaque when scrolled
+            ? "rgba(5, 30, 98, 0.95)" // Much darker and more opaque when scrolled
             : "rgba(255, 255, 255, 0.98)",
           borderBottom: scrolled
             ? `1px solid rgba(30, 58, 138, 0.2)`
