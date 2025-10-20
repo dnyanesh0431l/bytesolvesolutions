@@ -123,7 +123,7 @@ export default function ProductsPage() {
           </motion.div>
         ))}
       </div>
-
+{/*  */}
       {/* Bottom Accent Strip */}
       <motion.div
         initial={{ width: 0 }}
