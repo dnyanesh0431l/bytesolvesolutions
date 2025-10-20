@@ -4,36 +4,35 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function AppDevelopment() {
-  const [hoveredFeature, setHoveredFeature] = useState(null);
-  const [hoveredType, setHoveredType] = useState(null);
+export default function WebsiteDevelopment() {
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+  const [hoveredType, setHoveredType] = useState<number | null>(null);
 
   const PRIMARY = "#1e3a8a";
   const ACCENT = "#b30101";
   const BG = "#ffffff";
   const LIGHT_GRAY = "#f8fafc";
+  const YELLOW = "#fbbf24";
 
-  // Smooth container variants
-  // Smooth container variants
+  // Variants with proper TypeScript types
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.06,
-        ease: "easeOut",
+        staggerChildren: 0.2,
+        ease: "easeInOut" as const,
       },
     },
   };
 
-  // Buttery smooth item variants
   const itemVariants = {
     hidden: { y: 15, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 120,
         damping: 12,
         mass: 0.5,
@@ -41,7 +40,6 @@ export default function AppDevelopment() {
     },
   };
 
-  // Floating animation for hero elements
   const floatVariants = {
     initial: { y: 0 },
     float: {
@@ -49,35 +47,68 @@ export default function AppDevelopment() {
       transition: {
         duration: 4,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: "easeInOut" as const,
       },
     },
   };
 
   const features = [
-    { icon: "⚡", text: "Lightning-fast performance" },
-    { icon: "📱", text: "Native & cross-platform" },
-    { icon: "🎨", text: "Intuitive UI/UX" },
-    { icon: "🔒", text: "Secure & encrypted" },
-    { icon: "🔄", text: "Offline capability" },
-    { icon: "📊", text: "Real-time analytics" },
+    { icon: "⚡", text: "High Performance & Speed" },
+    { icon: "📱", text: "Smooth Cross-Platform Experience" },
+    { icon: "🎨", text: "Modern & Intuitive UI/UX" },
+    { icon: "🔒", text: "Enterprise-grade Security" },
+    { icon: "🧠", text: "Smart & Scalable Architecture" },
+    { icon: "🔄", text: "Continuous Updates & Support" },
   ];
 
   const appTypes = [
-    { name: "Business", icon: "💼", desc: "Enterprise solutions" },
-    { name: "E-Commerce", icon: "🛒", desc: "Mobile shopping experience" },
-    { name: "Social", icon: "👥", desc: "Community platforms" },
-    { name: "Productivity", icon: "📈", desc: "Workflow optimization" },
-    { name: "Gaming", icon: "🎮", desc: "Immersive experiences" },
-    { name: "Custom", icon: "⚙️", desc: "Tailored solutions" },
+    {
+      name: "Business App",
+      icon: "💼",
+      desc: "Boost productivity & customer engagement",
+    },
+    {
+      name: "E-Commerce App",
+      icon: "🛍️",
+      desc: "Seamless online shopping experience",
+    },
+    {
+      name: "Restaurant App",
+      icon: "🍴",
+      desc: "Menu, orders & delivery made easy",
+    },
+    {
+      name: "Education App",
+      icon: "📚",
+      desc: "Smart learning & progress tracking",
+    },
+    {
+      name: "Service Booking",
+      icon: "🧾",
+      desc: "On-demand scheduling & management",
+    },
+    {
+      name: "Custom App",
+      icon: "⚙️",
+      desc: "Built precisely for your business needs",
+    },
   ];
 
   const benefits = [
-    "Direct customer engagement",
-    "Push notifications",
-    "App store visibility",
-    "Enhanced user loyalty",
-    "Monetization opportunities",
+    "Enhance customer engagement",
+    "Automate business operations",
+    "Boost revenue through mobile reach",
+    "Real-time data & analytics",
+    "Scalable for future growth",
+  ];
+
+  // New variable for delivery items
+  const deliveryItems = [
+    "Blazing-fast Next.js websites",
+    "Modern, intuitive UI/UX design",
+    "Mobile-first responsive approach",
+    "Integrated analytics & tracking",
+    "Ongoing maintenance & support",
   ];
 
   return (
@@ -89,14 +120,10 @@ export default function AppDevelopment() {
       <section
         className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `
-      linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-      url('https://i.pinimg.com/1200x/76/4d/22/764d22db28f10521fc2b713e1b46d96e.jpg')
-    `,
+          backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://i.pinimg.com/1200x/76/4d/22/764d22db28f10521fc2b713e1b46d96e.jpg')`,
         }}
       >
         <div className="max-w-6xl mx-auto px-4 py-20 relative z-10 text-center">
-          {/* Heading: Left to Right */}
           <motion.h1
             className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg"
             initial={{ x: -100, opacity: 0 }}
@@ -104,10 +131,10 @@ export default function AppDevelopment() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            App Development by <span style={{ color: ACCENT }}>Bytesolve</span>
+            Application Development by{" "}
+            <span style={{ color: YELLOW }}>Bytesolve</span>
           </motion.h1>
 
-          {/* Subtext: Right to Left */}
           <motion.p
             className="text-base max-w-2xl mx-auto text-white opacity-90"
             initial={{ x: 100, opacity: 0 }}
@@ -115,8 +142,7 @@ export default function AppDevelopment() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            High-performance mobile apps that engage users and drive business
-            growth
+            Performance-driven Apps that convert visitors into loyal customers
           </motion.p>
         </div>
       </section>
@@ -131,7 +157,7 @@ export default function AppDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🔹 What Makes a Great Mobile App
+          🔹 What Makes a Great Application
         </motion.h2>
 
         <motion.div
@@ -192,7 +218,7 @@ export default function AppDevelopment() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            💡 How <span style={{ color: ACCENT }}>Bytesolve</span> Builds Apps
+            💡 How <span style={{ color: ACCENT }}>Bytesolve</span> Delivers
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6 items-center">
@@ -203,14 +229,7 @@ export default function AppDevelopment() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
             >
-              {[
-                "React Native & Flutter expertise",
-                "Native iOS & Android development",
-                "User-centric design approach",
-                "Rigorous testing & QA",
-                "App store deployment support",
-                "Post-launch maintenance",
-              ].map((item, i) => (
+              {deliveryItems.map((item, i) => (
                 <motion.li
                   key={i}
                   variants={itemVariants}
@@ -247,9 +266,12 @@ export default function AppDevelopment() {
                 className="relative z-10"
               >
                 <Image
-                  src="https://cdn.dribbble.com/users/638428/screenshots/3641004/code.gif"
-                  alt="App Development"
+                  src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"
+                  alt="Development"
+                  width={500}
+                  height={300}
                   className="rounded-xl shadow-lg w-full"
+                  unoptimized
                 />
               </motion.div>
             </motion.div>
@@ -257,7 +279,7 @@ export default function AppDevelopment() {
         </div>
       </section>
 
-      {/* Smooth App Types */}
+      {/* Smooth Website Types */}
       <section className="max-w-6xl mx-auto px-4 py-8">
         <motion.h2
           className="text-2xl font-bold text-center mb-6"
@@ -267,7 +289,7 @@ export default function AppDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          📱 What We Build
+          🌐 What We Build
         </motion.h2>
 
         <motion.div
@@ -339,7 +361,7 @@ export default function AppDevelopment() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Why Your Business Needs a Mobile App
+            🚀 Why Your Brand Needs a Website
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -368,7 +390,7 @@ export default function AppDevelopment() {
                       delay: i * 0.5,
                     }}
                   >
-                    📲
+                    💎
                   </motion.span>
                   <span
                     className="text-sm font-medium"
@@ -388,11 +410,11 @@ export default function AppDevelopment() {
               className="flex flex-col justify-center"
             >
               <h3 className="font-bold text-lg mb-2" style={{ color: ACCENT }}>
-                Your Mobile Strategy Partner
+                Your Growth Partner
               </h3>
               <p className="text-sm mb-4" style={{ color: `${PRIMARY}cc` }}>
-                From concept to app store, we create mobile experiences that
-                users love and businesses rely on for growth.
+                From planning to analytics integration, we build growth engines
+                that truly work for your business.
               </p>
 
               <motion.button
@@ -412,7 +434,7 @@ export default function AppDevelopment() {
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                Start Your App Project →
+                Get Your Website Built →
               </motion.button>
             </motion.div>
           </div>
@@ -432,10 +454,10 @@ export default function AppDevelopment() {
         >
           <p className="font-bold text-lg mb-1">
             Bytesolve —{" "}
-            <span style={{ color: ACCENT }}>Building Mobile Futures</span>
+            <span style={{ color: YELLOW }}>Building Digital Futures</span>
           </p>
           <p className="text-xs opacity-75">
-            Creating mobile experiences that users love and businesses grow with
+            Empowering businesses with websites that perform, engage, and grow
           </p>
         </motion.div>
       </footer>
