@@ -52,64 +52,65 @@ export default function WebsiteDevelopment() {
     },
   };
 
-  const features = [
-    { icon: "⚡", text: "High Performance & Speed" },
-    { icon: "📱", text: "Smooth Cross-Platform Experience" },
-    { icon: "🎨", text: "Modern & Intuitive UI/UX" },
-    { icon: "🔒", text: "Enterprise-grade Security" },
-    { icon: "🧠", text: "Smart & Scalable Architecture" },
-    { icon: "🔄", text: "Continuous Updates & Support" },
-  ];
+ const features = [
+  { icon: "⚡", text: "High Performance & Reliability" },
+  { icon: "🧩", text: "Fully Customizable Solutions" },
+  { icon: "🎨", text: "Intuitive & User-Friendly Interface" },
+  { icon: "🔒", text: "Robust Security & Compliance" },
+  { icon: "🧠", text: "Scalable & Intelligent Architecture" },
+  { icon: "🔄", text: "Ongoing Support & Maintenance" },
+];
 
-  const appTypes = [
-    {
-      name: "Business App",
-      icon: "💼",
-      desc: "Boost productivity & customer engagement",
-    },
-    {
-      name: "E-Commerce App",
-      icon: "🛍️",
-      desc: "Seamless online shopping experience",
-    },
-    {
-      name: "Restaurant App",
-      icon: "🍴",
-      desc: "Menu, orders & delivery made easy",
-    },
-    {
-      name: "Education App",
-      icon: "📚",
-      desc: "Smart learning & progress tracking",
-    },
-    {
-      name: "Service Booking",
-      icon: "🧾",
-      desc: "On-demand scheduling & management",
-    },
-    {
-      name: "Custom App",
-      icon: "⚙️",
-      desc: "Built precisely for your business needs",
-    },
-  ];
+const softwareTypes = [
+  {
+    name: "Enterprise Software",
+    icon: "🏢",
+    desc: "Streamline complex business processes",
+  },
+  {
+    name: "CRM Solutions",
+    icon: "🤝",
+    desc: "Manage customer relationships efficiently",
+  },
+  {
+    name: "ERP Systems",
+    icon: "📊",
+    desc: "Integrate and automate core business operations",
+  },
+  {
+    name: "Healthcare Software",
+    icon: "🩺",
+    desc: "Patient management & smart medical solutions",
+  },
+  {
+    name: "FinTech Applications",
+    icon: "💰",
+    desc: "Secure, scalable financial platforms",
+  },
+  {
+    name: "Custom Solutions",
+    icon: "⚙️",
+    desc: "Tailored software built for your unique needs",
+  },
+];
 
-  const benefits = [
-    "Enhance customer engagement",
-    "Automate business operations",
-    "Boost revenue through mobile reach",
-    "Real-time data & analytics",
-    "Scalable for future growth",
-  ];
+const benefits = [
+  "Optimize business processes",
+  "Automate repetitive tasks",
+  "Enhance team collaboration",
+  "Access real-time analytics & insights",
+  "Scale as your business grows",
+];
 
-  // New variable for delivery items
-  const deliveryItems = [
-    "Blazing-fast Next.js websites",
-    "Modern, intuitive UI/UX design",
-    "Mobile-first responsive approach",
-    "Integrated analytics & tracking",
-    "Ongoing maintenance & support",
-  ];
+// Delivery items for custom software projects
+const deliveryItems = [
+  "Tailor-made software solutions",
+  "User-friendly and modern UI/UX",
+  "Secure, reliable, and compliant systems",
+  "Integration with existing workflows",
+  "Continuous updates & technical support",
+];
+
 
   return (
     <div
@@ -131,7 +132,7 @@ export default function WebsiteDevelopment() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Application Development by{" "}
+            Custom Software Development by{" "}
             <span style={{ color: YELLOW }}>Bytesolve</span>
           </motion.h1>
 
@@ -157,7 +158,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🔹 What Makes a Great Application
+          🔹 What Makes a Great Custom Software
         </motion.h2>
 
         <motion.div
@@ -299,7 +300,7 @@ export default function WebsiteDevelopment() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {appTypes.map((type, i) => (
+          {softwareTypes.map((type, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -361,7 +362,7 @@ export default function WebsiteDevelopment() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Why Your Brand Needs a Website
+            🚀 Why You need Custum Software Solution
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -434,7 +435,7 @@ export default function WebsiteDevelopment() {
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                Get Your Website Built →
+                Get Your Custom Software Built →
               </motion.button>
             </motion.div>
           </div>

@@ -53,62 +53,62 @@ export default function WebsiteDevelopment() {
   };
 
   const features = [
-    { icon: "⚡", text: "High Performance & Speed" },
-    { icon: "📱", text: "Smooth Cross-Platform Experience" },
-    { icon: "🎨", text: "Modern & Intuitive UI/UX" },
-    { icon: "🔒", text: "Enterprise-grade Security" },
-    { icon: "🧠", text: "Smart & Scalable Architecture" },
-    { icon: "🔄", text: "Continuous Updates & Support" },
+    { icon: "🧠", text: "Expert IT Guidance & Strategy" },
+    { icon: "⚡", text: "Optimized & Efficient Solutions" },
+    { icon: "🔒", text: "Security & Compliance Assurance" },
+    { icon: "🌐", text: "Digital Transformation Support" },
+    { icon: "📊", text: "Data-Driven Decision Making" },
+    { icon: "🔄", text: "Continuous Monitoring & Improvement" },
   ];
 
-  const appTypes = [
+  const consultationTypes = [
     {
-      name: "Business App",
-      icon: "💼",
-      desc: "Boost productivity & customer engagement",
+      name: "IT Strategy & Planning",
+      icon: "📈",
+      desc: "Align technology with business goals",
     },
     {
-      name: "E-Commerce App",
-      icon: "🛍️",
-      desc: "Seamless online shopping experience",
+      name: "Infrastructure Management",
+      icon: "🖥️",
+      desc: "Optimize networks, servers & cloud solutions",
     },
     {
-      name: "Restaurant App",
-      icon: "🍴",
-      desc: "Menu, orders & delivery made easy",
+      name: "Cybersecurity Consultation",
+      icon: "🔒",
+      desc: "Protect data & prevent security breaches",
     },
     {
-      name: "Education App",
-      icon: "📚",
-      desc: "Smart learning & progress tracking",
+      name: "Cloud & DevOps Consulting",
+      icon: "☁️",
+      desc: "Seamless cloud integration & workflow automation",
     },
     {
-      name: "Service Booking",
-      icon: "🧾",
-      desc: "On-demand scheduling & management",
+      name: "Software & System Audits",
+      icon: "📝",
+      desc: "Evaluate IT systems for efficiency & compliance",
     },
     {
-      name: "Custom App",
+      name: "Custom IT Solutions",
       icon: "⚙️",
-      desc: "Built precisely for your business needs",
+      desc: "Tailored advice & implementation for your needs",
     },
   ];
 
   const benefits = [
-    "Enhance customer engagement",
-    "Automate business operations",
-    "Boost revenue through mobile reach",
-    "Real-time data & analytics",
-    "Scalable for future growth",
+    "Reduce IT costs & improve efficiency",
+    "Enhance system reliability & performance",
+    "Mitigate risks with better security",
+    "Enable informed business decisions",
+    "Stay ahead with latest technology trends",
   ];
 
-  // New variable for delivery items
+  // Delivery items for IT consultation projects
   const deliveryItems = [
-    "Blazing-fast Next.js websites",
-    "Modern, intuitive UI/UX design",
-    "Mobile-first responsive approach",
-    "Integrated analytics & tracking",
-    "Ongoing maintenance & support",
+    "IT strategy & roadmap planning",
+    "Infrastructure assessment & optimization",
+    "Cybersecurity risk analysis",
+    "Cloud & DevOps advisory",
+    "Custom IT solution recommendations",
   ];
 
   return (
@@ -131,8 +131,7 @@ export default function WebsiteDevelopment() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Application Development by{" "}
-            <span style={{ color: YELLOW }}>Bytesolve</span>
+            It Cunsulting by <span style={{ color: YELLOW }}>Bytesolve</span>
           </motion.h1>
 
           <motion.p
@@ -157,7 +156,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🔹 What Makes a Great Application
+          🔹 What is Best Cunsultation
         </motion.h2>
 
         <motion.div
@@ -289,7 +288,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🌐 What We Build
+          🌐 What We Cunsult
         </motion.h2>
 
         <motion.div
@@ -299,7 +298,7 @@ export default function WebsiteDevelopment() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {appTypes.map((type, i) => (
+          {consultationTypes.map((type, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -361,7 +360,7 @@ export default function WebsiteDevelopment() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Why Your Brand Needs a Website
+            🚀 Why You Needs a Cunsultation
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">

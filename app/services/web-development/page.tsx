@@ -52,64 +52,65 @@ export default function WebsiteDevelopment() {
     },
   };
 
-  const features = [
-    { icon: "⚡", text: "High Performance & Speed" },
-    { icon: "📱", text: "Smooth Cross-Platform Experience" },
-    { icon: "🎨", text: "Modern & Intuitive UI/UX" },
-    { icon: "🔒", text: "Enterprise-grade Security" },
-    { icon: "🧠", text: "Smart & Scalable Architecture" },
-    { icon: "🔄", text: "Continuous Updates & Support" },
-  ];
+ const features = [
+  { icon: "⚡", text: "High Performance & Fast Loading" },
+  { icon: "📱", text: "Responsive & Mobile-First Design" },
+  { icon: "🎨", text: "Modern & Intuitive UI/UX" },
+  { icon: "🔒", text: "Enterprise-grade Security" },
+  { icon: "🧠", text: "Scalable & Optimized Architecture" },
+  { icon: "🔄", text: "Continuous Updates & Support" },
+];
 
-  const appTypes = [
-    {
-      name: "Business App",
-      icon: "💼",
-      desc: "Boost productivity & customer engagement",
-    },
-    {
-      name: "E-Commerce App",
-      icon: "🛍️",
-      desc: "Seamless online shopping experience",
-    },
-    {
-      name: "Restaurant App",
-      icon: "🍴",
-      desc: "Menu, orders & delivery made easy",
-    },
-    {
-      name: "Education App",
-      icon: "📚",
-      desc: "Smart learning & progress tracking",
-    },
-    {
-      name: "Service Booking",
-      icon: "🧾",
-      desc: "On-demand scheduling & management",
-    },
-    {
-      name: "Custom App",
-      icon: "⚙️",
-      desc: "Built precisely for your business needs",
-    },
-  ];
+const webTypes = [
+  {
+    name: "Business Website",
+    icon: "💼",
+    desc: "Professional online presence for your company",
+  },
+  {
+    name: "E-Commerce Website",
+    icon: "🛍️",
+    desc: "Seamless online shopping experience",
+  },
+  {
+    name: "Portfolio Website",
+    icon: "🖼️",
+    desc: "Showcase your work & skills effectively",
+  },
+  {
+    name: "Educational Website",
+    icon: "📚",
+    desc: "Online courses & smart learning solutions",
+  },
+  {
+    name: "Booking & Service Portal",
+    icon: "🧾",
+    desc: "Schedule and manage services online",
+  },
+  {
+    name: "Custom Web Solution",
+    icon: "⚙️",
+    desc: "Tailored websites to match your unique needs",
+  },
+];
 
-  const benefits = [
-    "Enhance customer engagement",
-    "Automate business operations",
-    "Boost revenue through mobile reach",
-    "Real-time data & analytics",
-    "Scalable for future growth",
-  ];
+const benefits = [
+  "Increase online visibility & reach",
+  "Improve user engagement & retention",
+  "Streamline business operations",
+  "Access real-time data & analytics",
+  "Future-proof & scalable solutions",
+];
 
-  // New variable for delivery items
-  const deliveryItems = [
-    "Blazing-fast Next.js websites",
-    "Modern, intuitive UI/UX design",
-    "Mobile-first responsive approach",
-    "Integrated analytics & tracking",
-    "Ongoing maintenance & support",
-  ];
+// Delivery items for web projects
+const deliveryItems = [
+  "Blazing-fast Next.js or React websites",
+  "Modern, responsive & user-friendly design",
+  "SEO & performance optimized",
+  "Integrated analytics & tracking",
+  "Ongoing maintenance & support",
+];
+
 
   return (
     <div
@@ -131,7 +132,7 @@ export default function WebsiteDevelopment() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Application Development by{" "}
+            Web Development by{" "}
             <span style={{ color: YELLOW }}>Bytesolve</span>
           </motion.h1>
 
@@ -142,7 +143,7 @@ export default function WebsiteDevelopment() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Performance-driven Apps that convert visitors into loyal customers
+            Performance-driven Websites that convert visitors into loyal customers
           </motion.p>
         </div>
       </section>
@@ -157,7 +158,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🔹 What Makes a Great Application
+          🔹 What Makes a Great Converting Website
         </motion.h2>
 
         <motion.div
@@ -299,7 +300,7 @@ export default function WebsiteDevelopment() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {appTypes.map((type, i) => (
+          {webTypes.map((type, i) => (
             <motion.div
               key={i}
               variants={itemVariants}

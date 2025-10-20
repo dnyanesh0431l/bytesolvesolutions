@@ -52,64 +52,65 @@ export default function WebsiteDevelopment() {
     },
   };
 
-  const features = [
-    { icon: "⚡", text: "High Performance & Speed" },
-    { icon: "📱", text: "Smooth Cross-Platform Experience" },
-    { icon: "🎨", text: "Modern & Intuitive UI/UX" },
-    { icon: "🔒", text: "Enterprise-grade Security" },
-    { icon: "🧠", text: "Smart & Scalable Architecture" },
-    { icon: "🔄", text: "Continuous Updates & Support" },
-  ];
+ const features = [
+  { icon: "🎨", text: "Modern & Intuitive Design" },
+  { icon: "📱", text: "Responsive & Mobile-First Approach" },
+  { icon: "⚡", text: "Fast & Seamless User Experience" },
+  { icon: "🧠", text: "User-Centered & Research-Driven" },
+  { icon: "🔄", text: "Iterative Design & Continuous Improvement" },
+  { icon: "💡", text: "Innovative & Creative Solutions" },
+];
 
-  const appTypes = [
-    {
-      name: "Business App",
-      icon: "💼",
-      desc: "Boost productivity & customer engagement",
-    },
-    {
-      name: "E-Commerce App",
-      icon: "🛍️",
-      desc: "Seamless online shopping experience",
-    },
-    {
-      name: "Restaurant App",
-      icon: "🍴",
-      desc: "Menu, orders & delivery made easy",
-    },
-    {
-      name: "Education App",
-      icon: "📚",
-      desc: "Smart learning & progress tracking",
-    },
-    {
-      name: "Service Booking",
-      icon: "🧾",
-      desc: "On-demand scheduling & management",
-    },
-    {
-      name: "Custom App",
-      icon: "⚙️",
-      desc: "Built precisely for your business needs",
-    },
-  ];
+const designTypes = [
+  {
+    name: "Web UI/UX Design",
+    icon: "💻",
+    desc: "Engaging, responsive websites for all devices",
+  },
+  {
+    name: "Mobile App Design",
+    icon: "📱",
+    desc: "Smooth and intuitive experiences for iOS & Android",
+  },
+  {
+    name: "E-Commerce Design",
+    icon: "🛒",
+    desc: "Optimized for conversions and customer retention",
+  },
+  {
+    name: "Enterprise Software Design",
+    icon: "🏢",
+    desc: "Simplify complex workflows for better usability",
+  },
+  {
+    name: "Brand & Identity Design",
+    icon: "🎭",
+    desc: "Visually consistent and memorable brand experiences",
+  },
+  {
+    name: "Custom UI/UX Solutions",
+    icon: "⚙️",
+    desc: "Tailored design solutions for your unique requirements",
+  },
+];
 
-  const benefits = [
-    "Enhance customer engagement",
-    "Automate business operations",
-    "Boost revenue through mobile reach",
-    "Real-time data & analytics",
-    "Scalable for future growth",
-  ];
+const benefits = [
+  "Enhance user engagement & satisfaction",
+  "Boost conversions & business goals",
+  "Provide intuitive and seamless interactions",
+  "Strengthen brand identity",
+  "Iterate designs based on real user feedback",
+];
 
-  // New variable for delivery items
-  const deliveryItems = [
-    "Blazing-fast Next.js websites",
-    "Modern, intuitive UI/UX design",
-    "Mobile-first responsive approach",
-    "Integrated analytics & tracking",
-    "Ongoing maintenance & support",
-  ];
+// Delivery items for UI/UX projects
+const deliveryItems = [
+  "Wireframes & interactive prototypes",
+  "High-fidelity UI design",
+  "User research & usability testing",
+  "Responsive & adaptive designs",
+  "Ongoing design support & improvements",
+];
+
 
   return (
     <div
@@ -131,7 +132,7 @@ export default function WebsiteDevelopment() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Application Development by{" "}
+            UI/UX Design by{" "}
             <span style={{ color: YELLOW }}>Bytesolve</span>
           </motion.h1>
 
@@ -157,7 +158,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🔹 What Makes a Great Application
+          🔹 What Makes a Great UI/UX Design
         </motion.h2>
 
         <motion.div
@@ -299,7 +300,7 @@ export default function WebsiteDevelopment() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {appTypes.map((type, i) => (
+          {designTypes.map((type, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -361,7 +362,7 @@ export default function WebsiteDevelopment() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Why Your Brand Needs a Website
+            🚀 Why You need to Design UI/UX 
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">

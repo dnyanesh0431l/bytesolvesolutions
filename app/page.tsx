@@ -1,173 +1,207 @@
 "use client";
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-
-const PRIMARY = "#1e3a8a";
-const ACCENT = "#b30101";
-const BG = "#ffffff";
-const LIGHT_GRAY = "#f8fafc";
-
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function BytesolvePage() {
-  const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   return (
-    <div className="w-full overflow-x-hidden mt-16">
-      {/* Hero Section */}
-      <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+    <div className="w-full min-h-screen relative overflow-hidden">
+      {/* Video Background */}
+      <div className="fixed inset-0 w-full h-full -z-10">
         <video
           autoPlay
           loop
           muted
           playsInline
-          poster="/Videos/services-poster.jpg"
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          className="w-full h-full object-cover"
         >
           <source src="/Videos/glob.mp4" type="video/mp4" />
         </video>
 
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(180deg, ${PRIMARY}aa 0%, ${BG}99 100%)`,
-            mixBlendMode: "overlay",
-          }}
-        ></div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+      </div>
 
+      {/* Hero Content */}
+      <motion.section
+        style={{ opacity }}
+        className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 xl:px-16 py-20 md:py-0"
+      >
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-20">
+            {/* LEFT SIDE - Text Content */}
+            <div className="text-center lg:text-left">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md mb-6"
+                style={{ background: "rgba(255,255,255,0.05)" }}
+              >
+                <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                <span className="text-sm text-white/90 font-medium">
+                  Innovation Driven Solutions
+                </span>
+              </motion.div>
+
+              {/* Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight mb-4"
+                style={{ textShadow: "0 4px 24px rgba(0,0,0,0.4)" }}
+              >
+                Bytesolve
+              </motion.h1>
+
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-xl sm:text-2xl md:text-3xl text-blue-200/90 font-light mb-5"
+              >
+                Digital Excellence, Redefined.
+              </motion.p>
+
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-base sm:text-lg md:text-xl text-white/70 max-w-xl mx-auto lg:mx-0 mb-10"
+              >
+                Transforming ideas into impactful digital solutions — delivering
+                innovation, performance, and growth for the modern world.
+              </motion.p>
+
+              {/* Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
+              >
+                {/* Primary Button */}
+                <Link href="/services">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative px-8 py-4 rounded-2xl font-semibold text-white text-lg overflow-hidden transition-all duration-300"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+                      boxShadow: "0 6px 20px rgba(59,130,246,0.4)",
+                    }}
+                  >
+                    Explore Services →
+                  </motion.button>
+                </Link>
+
+                {/* Secondary Button */}
+                <Link href="/products">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative px-8 py-4 rounded-2xl font-semibold text-white/90 text-lg border border-white/20 backdrop-blur-md transition-all duration-300 hover:bg-white/10"
+                  >
+                    Our Products →
+                  </motion.button>
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* RIGHT SIDE - Stats / Visual */}
+            <div className="flex flex-col items-center lg:items-start justify-center text-center lg:text-left space-y-10">
+              {/* Optional graphic (you can replace with an image or animation later) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8 }}
+                className="hidden md:block w-60 h-60 rounded-full bg-gradient-to-tr from-blue-500/40 to-indigo-400/20 blur-3xl mx-auto lg:mx-0"
+              />
+
+              {/* Stats Section */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="flex flex-wrap items-center justify-center lg:justify-start gap-8 md:gap-12"
+              >
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                    500+
+                  </div>
+                  <div className="text-sm md:text-base text-white/60">
+                    Projects Delivered
+                  </div>
+                </div>
+                <div className="w-px h-12 bg-white/20 hidden sm:block" />
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                    98%
+                  </div>
+                  <div className="text-sm md:text-base text-white/60">
+                    Client Satisfaction
+                  </div>
+                </div>
+                <div className="w-px h-12 bg-white/20 hidden sm:block" />
+                <div className="text-center lg:text-left">
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
+                    24/7
+                  </div>
+                  <div className="text-sm md:text-base text-white/60">
+                    Support Available
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative z-10 text-center px-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 hidden md:block"
         >
-          <h1
-            className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4"
-            style={{
-              color: BG,
-              textShadow: `0 0 20px ${ACCENT}, 0 0 40px ${PRIMARY}`,
-            }}
-          >
-            Bytesolve Solutions
-          </h1>
-          <p
-            className="text-lg md:text-2xl max-w-2xl mx-auto mb-2"
-            style={{ color: LIGHT_GRAY }}
-          >
-            Transforming Ideas into Digital Reality
-          </p>
-          <p
-            className="text-base md:text-lg max-w-xl mx-auto"
-            style={{ color: LIGHT_GRAY }}
-          >
-            Cutting-edge software solutions that drive innovation and growth
-          </p>
-
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-10 flex flex-wrap justify-center gap-4"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-3 text-white/50 hover:text-white/80 transition-colors cursor-pointer"
           >
-            <motion.button
-              whileTap={{ scale: 0.98 }}
-              onClick={() => router.push("/services")}
-              className="group relative px-8 py-4 rounded-xl font-semibold text-white shadow-2xl overflow-hidden transition-all duration-300 cursor-pointer"
-              style={{
-                background: `linear-gradient(135deg, ${ACCENT}, ${PRIMARY})`,
-              }}
+            <span className="text-xs lg:text-sm tracking-widest uppercase">
+              Scroll Down
+            </span>
+            <svg
+              className="w-6 h-6 lg:w-7 lg:h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Explore Services
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-                style={{ background: "white" }}
-              ></div>
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.98 }}
-              onClick={() => router.push("/products")}
-              className="group relative px-8 py-4 rounded-xl font-semibold shadow-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 cursor-pointer"
-              style={{
-                background: "rgba(255, 255, 255, 0.15)",
-                border: `1px solid ${BG}`,
-                color: BG,
-              }}
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Explore Products
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `linear-gradient(135deg, ${ACCENT}33, ${PRIMARY}33)`,
-                }}
-              ></div>
-            </motion.button>
-
-            <motion.button
-              whileTap={{ scale: 0.98 }}
-              onClick={() => router.push("/about")}
-              className="group relative px-8 py-4 rounded-xl font-semibold shadow-2xl overflow-hidden backdrop-blur-sm transition-all duration-300 cursor-pointer"
-              style={{
-                background: "rgba(255, 255, 255, 0.15)",
-                border: `1px solid ${BG}`,
-                color: BG,
-              }}
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                About Us
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background: `linear-gradient(135deg, ${ACCENT}33, ${PRIMARY}33)`,
-                }}
-              ></div>
-            </motion.button>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
           </motion.div>
         </motion.div>
-      </section>
+      </motion.section>
     </div>
   );
 }

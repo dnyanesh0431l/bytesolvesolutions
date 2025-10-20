@@ -1,12 +1,11 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import { Poppins, Inter } from "next/font/google";
+import Header from "./Components/Header";
+import "./globals.css";
 
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";

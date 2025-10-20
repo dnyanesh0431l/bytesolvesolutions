@@ -53,62 +53,62 @@ export default function WebsiteDevelopment() {
   };
 
   const features = [
-    { icon: "⚡", text: "High Performance & Speed" },
-    { icon: "📱", text: "Smooth Cross-Platform Experience" },
-    { icon: "🎨", text: "Modern & Intuitive UI/UX" },
-    { icon: "🔒", text: "Enterprise-grade Security" },
-    { icon: "🧠", text: "Smart & Scalable Architecture" },
-    { icon: "🔄", text: "Continuous Updates & Support" },
+    { icon: "📈", text: "Data-Driven Strategies" },
+    { icon: "🎯", text: "Targeted Campaigns & Ads" },
+    { icon: "⚡", text: "Quick Results & ROI Focused" },
+    { icon: "🌐", text: "Multi-Channel Marketing" },
+    { icon: "🧠", text: "Intelligent Audience Segmentation" },
+    { icon: "🔄", text: "Continuous Optimization & Support" },
   ];
 
-  const appTypes = [
+  const marketingTypes = [
     {
-      name: "Business App",
-      icon: "💼",
-      desc: "Boost productivity & customer engagement",
+      name: "SEO Optimization",
+      icon: "🔍",
+      desc: "Boost organic traffic & search visibility",
     },
     {
-      name: "E-Commerce App",
-      icon: "🛍️",
-      desc: "Seamless online shopping experience",
+      name: "Social Media Marketing",
+      icon: "📱",
+      desc: "Engage and grow your audience across platforms",
     },
     {
-      name: "Restaurant App",
-      icon: "🍴",
-      desc: "Menu, orders & delivery made easy",
+      name: "Content Marketing",
+      icon: "✍️",
+      desc: "High-quality content to attract & retain customers",
     },
     {
-      name: "Education App",
-      icon: "📚",
-      desc: "Smart learning & progress tracking",
+      name: "Email Marketing",
+      icon: "📧",
+      desc: "Build relationships & drive conversions via email",
     },
     {
-      name: "Service Booking",
-      icon: "🧾",
-      desc: "On-demand scheduling & management",
+      name: "Paid Ads (PPC)",
+      icon: "💰",
+      desc: "Targeted campaigns for faster results",
     },
     {
-      name: "Custom App",
-      icon: "⚙️",
-      desc: "Built precisely for your business needs",
+      name: "Analytics & Reporting",
+      icon: "📊",
+      desc: "Track performance & optimize campaigns effectively",
     },
   ];
 
   const benefits = [
-    "Enhance customer engagement",
-    "Automate business operations",
-    "Boost revenue through mobile reach",
-    "Real-time data & analytics",
-    "Scalable for future growth",
+    "Increase brand awareness & online presence",
+    "Drive targeted traffic & leads",
+    "Boost sales & conversions",
+    "Gain actionable insights from analytics",
+    "Maximize ROI with data-driven campaigns",
   ];
 
-  // New variable for delivery items
+  // Delivery items for digital marketing projects
   const deliveryItems = [
-    "Blazing-fast Next.js websites",
-    "Modern, intuitive UI/UX design",
-    "Mobile-first responsive approach",
-    "Integrated analytics & tracking",
-    "Ongoing maintenance & support",
+    "SEO audit & optimization",
+    "Social media strategy & management",
+    "Content creation & marketing",
+    "PPC & paid campaigns",
+    "Performance tracking & reports",
   ];
 
   return (
@@ -131,7 +131,7 @@ export default function WebsiteDevelopment() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Application Development by{" "}
+            Digital Marketing by{" "}
             <span style={{ color: YELLOW }}>Bytesolve</span>
           </motion.h1>
 
@@ -157,7 +157,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🔹 What Makes a Great Application
+          🔹 What Makes a Great Brand
         </motion.h2>
 
         <motion.div
@@ -289,7 +289,7 @@ export default function WebsiteDevelopment() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🌐 What We Build
+          🌐 What We Provide
         </motion.h2>
 
         <motion.div
@@ -299,7 +299,7 @@ export default function WebsiteDevelopment() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {appTypes.map((type, i) => (
+          {marketingTypes.map((type, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -361,7 +361,7 @@ export default function WebsiteDevelopment() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Why Your Brand Needs a Website
+            🚀 Why You needs Branding and Digital Marketing
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">

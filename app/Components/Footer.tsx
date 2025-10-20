@@ -59,7 +59,7 @@ export default function Footer() {
   ];
 
   const contactInfo = [
-    { icon: Phone, text: "+91 8788676265", href: "tel:+918788676265" },
+    { icon: Phone, text: "+91 878-867-6265", href: "tel:+918788676265" },
     { icon: Mail, text: "contact@bytesolvesolutions.in", href: "mailto:contact@bytesolvesolutions.in" },
     { icon: MapPin, text: "Chhatrapati Sambhaji Nagar, Maharashtra, India" },
   ];
