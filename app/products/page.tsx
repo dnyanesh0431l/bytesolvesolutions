@@ -10,6 +10,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const PRIMARY = "#1e3a8a";
 
@@ -25,7 +26,8 @@ const products = [
     icon: Scissors,
     features: ["Booking System", "Client Management", "Inventory Tracking"],
     stats: "98% client satisfaction",
-    image: "/Images/salon.png"
+    image: "/Images/salon.png",
+    path: "/products/salon-software"
   },
   {
     id: 2,
@@ -35,7 +37,8 @@ const products = [
     icon: UtensilsCrossed,
     features: ["POS System", "Menu Management", "Kitchen Display"],
     stats: "40% faster service",
-    image: "/Images/restaurant-soft.png"
+    image: "/Images/restaurant-soft.png",
+    path: "/products/restaurant-software"
   },
   {
     id: 3,
@@ -45,15 +48,21 @@ const products = [
     icon: ShoppingCart,
     features: ["Store Builder", "Payment Gateway", "Analytics Dashboard"],
     stats: "3x conversion growth",
-    image: "/Images/ecommerce.png"
+    image: "/Images/ecommerce.png",
+    path: "/products/ecommerce"
   },
 ];
 
 export default function ProductsPage() {
   const productsRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const scrollToProducts = () => {
     productsRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const navigateToProduct = (path: string) => {
+    router.push(path);
   };
 
   return (
@@ -209,7 +218,8 @@ export default function ProductsPage() {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.97 }}
-                  className="px-8 py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300"
+                  onClick={() => navigateToProduct(product.path)}
+                  className="px-8 py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300 cursor-pointer"
                   style={{
                     background:
                       "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",

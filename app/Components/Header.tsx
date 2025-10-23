@@ -141,7 +141,7 @@ export default function Header() {
                     scrolled ? "text-blue-100" : "text-slate-500"
                   }`}
                 >
-                  Software Solutions
+                   Solutions
                 </span>
               </div>
             </Link>
