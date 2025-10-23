@@ -4,11 +4,22 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { db } from "@/app/firebaseConfig";
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, DocumentData } from "firebase/firestore";
 import { motion } from "framer-motion";
 
+interface Blog {
+  id: string;
+  title: string;
+  slug: string;
+  image?: string;
+  excerpt?: string;
+  author?: string;
+  date?: string;
+  createdAt?: string | number;
+}
+
 export default function BlogList() {
-  const [blogs, setBlogs] = useState<any[]>([]);
+  const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,10 +27,10 @@ export default function BlogList() {
       try {
         const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
         const snap = await getDocs(q);
-        const blogData = snap.docs.map((doc) => ({
+        const blogData: Blog[] = snap.docs.map((doc: DocumentData) => ({
           id: doc.id,
           ...doc.data(),
-        }));
+        })) as Blog[];
         setBlogs(blogData);
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -42,7 +53,7 @@ export default function BlogList() {
   return (
     <section className="px-4 mt-16 sm:px-6 lg:px-10 py-12 max-w-7xl mx-auto">
       {/* Header */}
-      <div  className="text-center mb-10">
+      <div className="text-center mb-10">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
           Latest <span className="text-blue-700">Blogs</span>
         </h1>
@@ -88,7 +99,9 @@ export default function BlogList() {
                   </p>
 
                   <div className="pt-3 text-sm text-gray-500 flex justify-between items-center">
-                    <span>By <strong>{blog.author || "Admin"}</strong></span>
+                    <span>
+                      By <strong>{blog.author || "Admin"}</strong>
+                    </span>
                     <span>
                       {blog.date
                         ? new Date(blog.date).toLocaleDateString("en-IN", {

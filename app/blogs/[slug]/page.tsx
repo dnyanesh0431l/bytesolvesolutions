@@ -83,7 +83,7 @@ export async function generateMetadata({
       datePublished: data.date,
       mainEntityOfPage: `${baseUrl}/blogs/${slug}`,
     };
-
+//update
     return {
       title: seo.metaTitle || `${data.title} | Bytesolve Solutions`,
       description:
