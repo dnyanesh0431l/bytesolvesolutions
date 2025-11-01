@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const PRIMARY = "#1e3a8a";
-const ACCENT = "#b30101";
+// const ACCENT = "#b30101";
 const BG = "#ffffff";
 const YELLOW = "#ffd261ff";
 const LIGHT_GRAY = "#f8fafc";
@@ -80,7 +80,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
             className="text-xl sm:text-2xl font-light mb-8 max-w-2xl mx-auto"
-            style={{ color: YELLOW }}
+            style={{ color: BG }}
           >
             Empowering businesses through innovation, design, and cutting-edge technology.
           </motion.p>

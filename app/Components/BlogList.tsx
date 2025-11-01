@@ -20,7 +20,7 @@ import { motion } from "framer-motion";
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";
 const BG = "#ffffff";
-const YELLOW = "#fbbf24";
+// const YELLOW = "#fbbf24";
 const LIGHT_GRAY = "#f8fafc";
 const DARK_GRAY = "#334155";
 
@@ -138,7 +138,7 @@ export default function BlogList() {
 
   return (
     <section
-      className="px-4 sm:px-6 lg:px-10 py-12 max-w-7xl mx-auto"
+      className="px-4 sm:px-6 mt-12 lg:px-10 py-12 max-w-7xl mx-auto"
       style={{ backgroundColor: LIGHT_GRAY }}
     >
       {/* Header */}
