@@ -11,3 +11,4 @@ Sitemap: https://bytesolvesolutions.in/sitemap.xml
     },
   });
 }
+// this was optional

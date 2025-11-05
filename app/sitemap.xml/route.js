@@ -1,4 +1,4 @@
-import { db } from "@/firebaseConfig";
+import { db } from "@/app/firebaseConfig";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
 // This route dynamically generates sitemap.xml for Google
