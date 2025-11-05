@@ -77,11 +77,11 @@ export async function generateMetadata({
     title: seo.metaTitle || `${data.title} | Bytesolve Solutions`,
     description: seo.metaDescription || data.excerpt || data.description?.slice(0, 160),
     keywords: seo.keywords,
-    alternates: { canonical: seo.canonicalUrl || `${baseUrl}/blogs/${slug}` },
+    alternates: { canonical: `${baseUrl}/blogs/${slug}` },
     openGraph: {
       title: seo.metaTitle || data.title,
       description: seo.metaDescription || data.excerpt,
-      url: seo.canonicalUrl || `${baseUrl}/blogs/${slug}`,
+      url: `${baseUrl}/blogs/${slug}`,
       type: "article",
       images: [{ url: seo.ogImage || data.image || "/default-blog.jpg", width: 1200, height: 630, alt: data.title }],
     },
