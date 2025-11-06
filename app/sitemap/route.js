@@ -58,17 +58,17 @@ export async function GET() {
 
     // 4️⃣ Generate XML format
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-      ${allUrls
-        .map(
-          (url) => `
-        <url>
-          <loc>${url.loc}</loc>
-          <lastmod>${url.lastmod}</lastmod>
-        </url>`
-        )
-        .join("")}
-    </urlset>`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allUrls
+  .map(
+    (url) => `
+  <url>
+    <loc>${url.loc}</loc>
+    <lastmod>${url.lastmod}</lastmod>
+  </url>`
+  )
+  .join("")}
+</urlset>`;
 
     // 5️⃣ Return response
     return new Response(sitemap, {

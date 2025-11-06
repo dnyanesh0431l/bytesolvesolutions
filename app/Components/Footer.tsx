@@ -45,9 +45,9 @@ export default function Footer() {
     ],
     resources: [
       { label: "Blog", href: "/blogs" },
-      { label: "Case Studies", href: "/case-studies" },
-      { label: "Documentation", href: "/docs" },
-      { label: "Support", href: "/support" },
+      // { label: "Case Studies", href: "/case-studies" },
+      // { label: "Documentation", href: "/docs" },
+      // { label: "Support", href: "/support" },
     ],
   };
 

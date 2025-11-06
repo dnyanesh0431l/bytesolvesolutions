@@ -92,7 +92,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div style={{ backgroundColor: LIGHT_GRAY, minHeight: "100vh" }}>
+    <div className="mt-16" style={{ backgroundColor: LIGHT_GRAY, minHeight: "100vh" }}>
       {/* Compact Hero with Overlay Pattern */}
       <div
         style={{
