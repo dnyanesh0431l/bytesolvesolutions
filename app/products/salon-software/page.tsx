@@ -314,8 +314,8 @@ export default function SalonBytePage() {
               >
                 {/* Device Frame */}
                 <div
-                  className={`relative ${
-                    activeTab === "admin" ? "aspect-video" : "aspect-[9/19]"
+                  className={`relative  ${
+                    activeTab === "admin" ? "aspect-video" : "aspect-[9/19] h-120"
                   } rounded-2xl overflow-hidden shadow-2xl ${
                     activeTab === "admin" ? "bg-gray-900 p-3" : "bg-black p-2"
                   }`}

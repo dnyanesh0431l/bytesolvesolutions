@@ -1,15 +1,22 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import Header from "./Header";
 import Footer from "./Footer";
+import Header from "./Header";
+
+const MotionImage = motion(Image); // 👈 yeh line important hai!
 
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";
 const BG = "#ffffff";
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,9 +36,11 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             className="fixed inset-0 flex flex-col items-center justify-center z-50"
             style={{ backgroundColor: BG, color: PRIMARY }}
           >
-            <motion.img
+            <MotionImage
               src="/Images/logo.png"
               alt="ByteSolve Logo"
+              width={96}
+              height={96}
               className="w-24 h-24 mb-4"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
