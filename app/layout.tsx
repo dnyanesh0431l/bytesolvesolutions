@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono, Inter, Poppins } from "next/font/google";
-import "./globals.css";
 import ClientLayout from "./Components/ClientLayout";
+import "./globals.css";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800"],
@@ -26,7 +26,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+//
+// 🧠 ADD THIS — Metadata including favicon and manifest
+//
+export const metadata = {
+  title: "Bytesolve Solutions",
+  description:
+    "Innovative digital solutions to grow your business. Powered by Bytesolve.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+};
+
+//
+// 🧱 Root Layout
+//
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <body
