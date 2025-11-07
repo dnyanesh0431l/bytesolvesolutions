@@ -37,8 +37,8 @@ export default function ClientLayout({
             style={{ backgroundColor: BG, color: PRIMARY }}
           >
             <MotionImage
-              src="/Images/logo.png"
-              alt="ByteSolve Logo"
+              src="/Images/Logo.png"
+              alt="ByteSolve Logo" //kjjkj
               width={96}
               height={96}
               className="w-24 h-24 mb-4"
