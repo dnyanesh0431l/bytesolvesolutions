@@ -111,19 +111,7 @@ export default function BytesolvePage() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="flex justify-center gap-4"
           >
-            {/* <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative px-8 py-4 rounded-2xl font-semibold text-white text-lg overflow-hidden transition-all duration-300"
-                style={{
-                  background: `linear-gradient(135deg, ${ACCENT} 0%, #8f0000 100%)`,
-                  boxShadow: `0 6px 20px ${ACCENT}40`,
-                }}
-              >
-                Get Started Today →
-              </motion.button>
-            </Link> */}
+          
           </motion.div>
         </motion.div>
 

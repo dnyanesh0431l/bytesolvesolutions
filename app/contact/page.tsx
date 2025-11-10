@@ -4,13 +4,13 @@ import {
   ArrowRight,
   CheckCircle,
   Globe,
+  LucideIcon,
   Mail,
   MapPin,
   MessageSquare,
   Phone,
   Send,
   Zap,
-  LucideIcon, // Import LucideIcon type
 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -92,7 +92,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="mt-16" style={{ backgroundColor: LIGHT_GRAY, minHeight: "100vh" }}>
+    <div
+      className="mt-16"
+      style={{ backgroundColor: LIGHT_GRAY, minHeight: "100vh" }}
+    >
       {/* Compact Hero with Overlay Pattern */}
       <div
         style={{
@@ -419,6 +422,7 @@ export default function ContactPage() {
                 >
                   <div className="font-bold mb-1">Need immediate help?</div>
                   <div className="opacity-90">📞 +91 878-867-6265</div>
+                  <div className="opacity-90">📞 +91 915-886-9707</div>
                 </div>
               </div>
             </div>

@@ -1,15 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ChevronDown,
-  Scissors,
-  ShoppingCart,
-  UtensilsCrossed,
-} from "lucide-react";
-import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Scissors, ShoppingCart, UtensilsCrossed } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const PRIMARY = "#1e3a8a";
 const ACCENT = "#b30101";
@@ -17,9 +11,6 @@ const BG = "#ffffff";
 const YELLOW = "#fbbf24";
 const LIGHT_GRAY = "#f8fafc";
 const DARK_GRAY = "#334155";
-
-const BG_IMAGE =
-  "https://i.pinimg.com/1200x/28/28/fd/2828fdb7ff978e37ce2570889dc208d5.jpg";
 
 const products = [
   {
@@ -31,7 +22,7 @@ const products = [
     features: ["Booking System", "Client Management", "Inventory Tracking"],
     stats: "98% client satisfaction",
     image: "/Images/salon.png",
-    path: "/products/salon-software"
+    path: "/products/salon-software",
   },
   {
     id: 2,
@@ -42,7 +33,7 @@ const products = [
     features: ["POS System", "Menu Management", "Kitchen Display"],
     stats: "40% faster service",
     image: "/Images/restaurant-soft.png",
-    path: "/products/restaurant-software"
+    path: "/products/restaurant-software",
   },
   {
     id: 3,
@@ -53,105 +44,151 @@ const products = [
     features: ["Store Builder", "Payment Gateway", "Analytics Dashboard"],
     stats: "3x conversion growth",
     image: "/Images/ecommerce.png",
-    path: "/products/ecommerce"
+    path: "/products/ecommerce",
   },
 ];
 
 export default function ProductsPage() {
   const productsRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   const scrollToProducts = () => {
-    productsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    productsRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
 
   const navigateToProduct = (path: string) => {
     router.push(path);
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: BG }}>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-screen w-full overflow-hidden flex items-center">
-        {/* Static Background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{
-            backgroundImage: `url(${BG_IMAGE})`,
-          }}
-        ></div>
+      {/* Video Background */}
+      <div className="fixed inset-0 w-full h-full -z-10">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/Videos/glob.mp4" type="video/mp4" />
+        </video>
 
-        {/* Overlay */}
-        <div className="absolute inset-0" style={{ backgroundColor: `${PRIMARY}99` }}></div>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+      </div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col justify-center items-center text-center w-full px-4 sm:px-6 py-20">
-          <div className="max-w-4xl">
-            {/* Trust Badge */}
-           
+      {/* Hero Content */}
+      <motion.section
+        style={{ opacity }}
+        className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-12 xl:px-16 py-20 md:py-0"
+      >
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-8 lg:px-12 py-16 md:py-24">
+          <div className="relative z-10 flex flex-col justify-center items-center text-center w-full px-4 sm:px-6 py-20">
+            <div className="max-w-4xl">
+              {/* Trust Badge */}
 
-            {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight"
-              style={{ color: BG }}
-            >
-              Empower Your Business with
-              <br />
-              <span style={{ color: YELLOW }}>Bytesolve</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="max-w-2xl text-lg mb-8 leading-relaxed mx-auto"
-              style={{ color: LIGHT_GRAY }}
-            >
-              Enterprise-grade software crafted to streamline operations,
-              amplify performance, and deliver exceptional customer experiences.
-            </motion.p>
-
-            {/* CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="flex justify-center mb-8"
-            >
-              <button
-                onClick={scrollToProducts}
-                className="group px-8 py-4 rounded-xl font-semibold text-white transition-all duration-200 flex items-center gap-3 shadow-lg hover:shadow-xl active:scale-95"
-                style={{ 
-                  backgroundColor: ACCENT,
-                  boxShadow: `0 10px 30px ${ACCENT}40`
-                }}
+              {/* Main Heading */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight"
+                style={{ color: BG }}
               >
-                View Products
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </motion.div>
+                Empower Your Business with
+                <br />
+                <span style={{ color: YELLOW }}>Bytesolve</span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="max-w-2xl text-lg mb-8 leading-relaxed mx-auto"
+                style={{ color: LIGHT_GRAY }}
+              >
+                Enterprise-grade software crafted to streamline operations,
+                amplify performance, and deliver exceptional customer
+                experiences.
+              </motion.p>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex justify-center mb-8"
+              >
+                <button
+                  onClick={scrollToProducts}
+                  className="group px-8 py-4 rounded-xl font-semibold text-white transition-all duration-200 flex items-center gap-3 shadow-lg hover:shadow-xl active:scale-95"
+                  style={{
+                    backgroundColor: ACCENT,
+                    boxShadow: `0 10px 30px ${ACCENT}40`,
+                  }}
+                >
+                  View Products
+                  {/* <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" /> */}
+                </button>
+              </motion.div>
+            </div>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="flex flex-col items-center" style={{ color: LIGHT_GRAY }}>
-            <span className="text-sm mb-1">Scroll to explore</span>
-            <ChevronDown className="w-4 h-4 animate-bounce" />
-          </div>
-        </div>
-      </section>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 hidden md:block"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="flex flex-col items-center gap-3 text-white/50 hover:text-white/80 transition-colors cursor-pointer"
+          >
+            <span className="text-xs lg:text-sm tracking-widest uppercase">
+              Scroll Down
+            </span>
+            <svg
+              className="w-6 h-6 lg:w-7 lg:h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </motion.div>
+        </motion.div>
+      </motion.section>
 
       {/* Products Section */}
-      <section 
+      <section
         ref={productsRef}
         className="relative w-full py-16 border-t"
-        style={{ 
+        style={{
           backgroundColor: LIGHT_GRAY,
-          borderColor: `${DARK_GRAY}20`
+          borderColor: `${DARK_GRAY}20`,
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-16">
@@ -176,14 +213,16 @@ export default function ProductsPage() {
                   transition={{ type: "spring", stiffness: 200 }}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.src = `https://via.placeholder.com/400x300/${PRIMARY.substring(1)}/ffffff?text=${encodeURIComponent(product.title)}`;
+                    target.src = `https://via.placeholder.com/400x300/${PRIMARY.substring(
+                      1
+                    )}/ffffff?text=${encodeURIComponent(product.title)}`;
                   }}
                 />
                 {/* Decorative glow */}
-                <div 
+                <div
                   className="absolute inset-0 blur-3xl -z-10 opacity-30"
-                  style={{ 
-                    background: `linear-gradient(135deg, ${PRIMARY}20, ${ACCENT}20)`
+                  style={{
+                    background: `linear-gradient(135deg, ${PRIMARY}20, ${ACCENT}20)`,
                   }}
                 />
               </div>
@@ -199,7 +238,7 @@ export default function ProductsPage() {
                 >
                   {product.title}
                 </motion.h3>
-                <p 
+                <p
                   className="mb-6 text-lg leading-relaxed max-w-xl mx-auto lg:mx-0"
                   style={{ color: DARK_GRAY }}
                 >
@@ -239,17 +278,17 @@ export default function ProductsPage() {
                     className="px-8 py-3 rounded-xl font-semibold text-white text-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
                     style={{
                       backgroundColor: ACCENT,
-                      boxShadow: `0 6px 20px ${ACCENT}40`
+                      boxShadow: `0 6px 20px ${ACCENT}40`,
                     }}
                   >
                     Explore {product.title} →
                   </motion.button>
-                  
-                  <div 
+
+                  <div
                     className="px-4 py-2 rounded-lg text-sm font-medium"
-                    style={{ 
+                    style={{
                       backgroundColor: `${YELLOW}20`,
-                      color: DARK_GRAY
+                      color: DARK_GRAY,
                     }}
                   >
                     {product.stats}
