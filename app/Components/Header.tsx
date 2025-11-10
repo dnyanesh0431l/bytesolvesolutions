@@ -235,26 +235,7 @@ export default function Header() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3 font-inter">
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{
-                    scale: 1.04,
-                    boxShadow: scrolled 
-                      ? "0 8px 24px rgba(251, 191, 36, 0.3)"
-                      : "0 8px 24px rgba(30, 58, 138, 0.2)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="px-6 py-2.5 rounded-lg font-semibold text-sm tracking-wide transition-all duration-200 border-2 font-inter"
-                  style={{
-                    background: scrolled ? "transparent" : BG,
-                    color: scrolled ? YELLOW : PRIMARY,
-                    borderColor: scrolled ? YELLOW : PRIMARY,
-                  }}
-                >
-                  Let&apos;s Talk
-                </motion.button>
-              </Link>
+              
               <Link href="/get-quote">
                 <motion.button
                   whileHover={{
@@ -423,14 +404,7 @@ export default function Header() {
               {/* Drawer Footer */}
               <div className="border-t border-slate-200 p-5 bg-white font-inter">
                 <div className="flex flex-col gap-3">
-                  <Link href="/contact" onClick={() => setDrawerOpen(false)}>
-                    <motion.button
-                      whileTap={{ scale: 0.97 }}
-                      className="w-full py-3 rounded-lg font-semibold text-sm tracking-wide border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white transition-all duration-200 font-inter"
-                    >
-                      Let&apos;s Talk
-                    </motion.button>
-                  </Link>
+                
                   <Link href="/get-quote" onClick={() => setDrawerOpen(false)}>
                     <motion.button
                       whileTap={{ scale: 0.97 }}
