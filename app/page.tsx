@@ -142,10 +142,10 @@ export default function BytesolvePage() {
               >
                 <div className="text-center lg:text-left">
                   <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">
-                    500+
+                    7+
                   </div>
                   <div className="text-sm md:text-base text-white/60">
-                    Projects Delivered
+                    years of Experience
                   </div>
                 </div>
                 <div className="w-px h-12 bg-white/20 hidden sm:block" />
