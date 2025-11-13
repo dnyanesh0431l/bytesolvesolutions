@@ -26,17 +26,20 @@ export default async function BlogsPage() {
         excerpt: d.excerpt || "",
         author: d.author || "Bytesolve Team",
         category: d.category || "General",
+        featured: d.featured || false,
         date: d.date || null,
         createdAt:
           d.createdAt && typeof d.createdAt.toDate === "function"
             ? d.createdAt.toDate().toISOString()
             : null,
-        updatedAt:
-          d.updatedAt && typeof d.updatedAt.toDate === "function"
-            ? d.updatedAt.toDate().toISOString()
-            : null,
       };
     });
+
+    // ✅ sirf featured blogs
+    const featuredBlogs = blogs.filter((b) => b.featured === true);
+
+    // ✅ unique categories
+    const categories = [...new Set(featuredBlogs.map((b) => b.category))];
 
     const safeBlogs = JSON.parse(JSON.stringify(blogs));
 
@@ -52,8 +55,8 @@ export default async function BlogsPage() {
           </p>
         </div>
 
-        {safeBlogs.length > 0 ? (
-          <BlogGrid blogs={safeBlogs} />
+        {featuredBlogs.length > 0 ? (
+          <BlogGrid blogs={featuredBlogs} categories={categories} />
         ) : (
           <p className="text-center text-gray-500 text-lg mt-6">
             No blogs available right now.

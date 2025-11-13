@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -52,71 +53,164 @@ export default function WebsiteDevelopment() {
     },
   };
 
- const features = [
-  { icon: "⚡", text: "High Performance & Fast Loading" },
-  { icon: "📱", text: "Responsive & Mobile-First Design" },
-  { icon: "🎨", text: "Modern & Intuitive UI/UX" },
-  { icon: "🔒", text: "Enterprise-grade Security" },
-  { icon: "🧠", text: "Scalable & Optimized Architecture" },
-  { icon: "🔄", text: "Continuous Updates & Support" },
-];
+  // SEO-optimized features with keywords
+  const features = [
+    { icon: "⚡", text: "Fast Website Development & Performance Optimization" },
+    { icon: "📱", text: "Mobile-First Responsive Web Design" },
+    { icon: "🎨", text: "Custom Website Development & UI/UX Design" },
+    { icon: "🔒", text: "Secure Web Development & Data Protection" },
+    { icon: "🧠", text: "Scalable Web Architecture & Solutions" },
+    { icon: "🔄", text: "Ongoing Website Maintenance & Support" },
+  ];
 
-const webTypes = [
-  {
-    name: "Business Website",
-    icon: "💼",
-    desc: "Professional online presence for your company",
-  },
-  {
-    name: "E-Commerce Website",
-    icon: "🛍️",
-    desc: "Seamless online shopping experience",
-  },
-  {
-    name: "Portfolio Website",
-    icon: "🖼️",
-    desc: "Showcase your work & skills effectively",
-  },
-  {
-    name: "Educational Website",
-    icon: "📚",
-    desc: "Online courses & smart learning solutions",
-  },
-  {
-    name: "Booking & Service Portal",
-    icon: "🧾",
-    desc: "Schedule and manage services online",
-  },
-  {
-    name: "Custom Web Solution",
-    icon: "⚙️",
-    desc: "Tailored websites to match your unique needs",
-  },
-];
+  // SEO-optimized web types
+  const webTypes = [
+    {
+      name: "Business Website Development",
+      icon: "💼",
+      desc: "Professional corporate website development services for businesses",
+    },
+    {
+      name: "E-Commerce Website Development",
+      icon: "🛍️",
+      desc: "Custom e-commerce development with secure payment integration",
+    },
+    {
+      name: "Portfolio Website Development",
+      icon: "🖼️",
+      desc: "Professional portfolio website development for creatives",
+    },
+    {
+      name: "Educational Website Development",
+      icon: "📚",
+      desc: "Custom educational website development and LMS solutions",
+    },
+    {
+      name: "Booking & Service Portal Development",
+      icon: "🧾",
+      desc: "Professional booking system and service portal development",
+    },
+    {
+      name: "Custom Web Application Development",
+      icon: "⚙️",
+      desc: "Tailored custom web development for unique business needs",
+    },
+  ];
 
-const benefits = [
-  "Increase online visibility & reach",
-  "Improve user engagement & retention",
-  "Streamline business operations",
-  "Access real-time data & analytics",
-  "Future-proof & scalable solutions",
-];
+  const benefits = [
+    "Increase online visibility & search engine rankings",
+    "Improve user engagement & conversion rates",
+    "Streamline business operations with custom web solutions",
+    "Access real-time data & business analytics",
+    "Future-proof & scalable web development solutions",
+  ];
 
-// Delivery items for web projects
-const deliveryItems = [
-  "Blazing-fast Next.js or React websites",
-  "Modern, responsive & user-friendly design",
-  "SEO & performance optimized",
-  "Integrated analytics & tracking",
-  "Ongoing maintenance & support",
-];
+  // Delivery items for web projects
+  const deliveryItems = [
+    "Blazing-fast Next.js or React website development",
+    "Modern, responsive & mobile-friendly web design",
+    "SEO-optimized website development & technical SEO",
+    "Integrated analytics & conversion tracking",
+    "Ongoing website maintenance & technical support",
+  ];
 
+  // FAQ data
+  const faqItems = [
+    {
+      q: "What is your website development process?",
+      a: "Our custom website development process includes comprehensive consultation, UI/UX design, development, rigorous testing, and successful launch phases to ensure quality.",
+    },
+    {
+      q: "How long does website development typically take?",
+      a: "Typical website development projects take 4-8 weeks depending on complexity, features required, and the scope of custom web development needed.",
+    },
+    {
+      q: "Do you provide website maintenance after development?",
+      a: "Yes, we offer comprehensive website maintenance, security updates, and technical support packages for all our web development projects.",
+    },
+    {
+      q: "Are your websites mobile-responsive?",
+      a: "Absolutely! We specialize in mobile-first responsive web design that ensures optimal performance across all devices and screen sizes.",
+    },
+  ];
 
   return (
     <div
       className="min-h-screen mt-16 overflow-hidden"
       style={{ backgroundColor: LIGHT_GRAY }}
     >
+      {/* SEO Meta Tags and Structured Data */}
+      <Head>
+        <title>
+          Website Development Company | Custom Web Solutions | Bytesolve
+        </title>
+        <meta
+          name="description"
+          content="Professional website development services by Bytesolve. Fast, responsive, SEO-optimized websites that convert visitors into customers. Get your custom web solution today!"
+        />
+        <meta
+          name="keywords"
+          content="website development, web development company, custom websites, responsive web design, e-commerce development, web application development"
+        />
+        <meta
+          property="og:title"
+          content="Professional Website Development Services | Bytesolve"
+        />
+        <meta
+          property="og:description"
+          content="Custom web development solutions that drive results. Fast, secure, and scalable websites for your business."
+        />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Website Development",
+            provider: {
+              "@type": "Organization",
+              name: "Bytesolve",
+              description: "Professional website development company",
+            },
+            description:
+              "Professional website development services including custom web design, e-commerce development, and responsive web applications",
+            serviceType: "Web Development",
+            areaServed: "Worldwide",
+          })}
+        </script>
+      </Head>
+
+      {/* SEO Content Section */}
+      <section className="max-w-4xl mx-auto px-4 py-12 text-center bg-white">
+        <motion.h1
+          className="text-3xl md:text-4xl font-bold mb-6"
+          style={{ color: PRIMARY }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          Professional Website Development Services
+        </motion.h1>
+        <motion.p
+          className="text-lg mb-8 leading-relaxed"
+          style={{ color: `${PRIMARY}dd` }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          As a leading <strong>website development company</strong>, Bytesolve
+          specializes in creating
+          <strong> custom web development solutions</strong> that drive business
+          growth. Our
+          <strong> responsive web design</strong> and{" "}
+          <strong>SEO-optimized development</strong>
+          ensure your website ranks higher and converts better. We provide
+          comprehensive
+          <strong> web application development</strong> services tailored to
+          your specific business needs.
+        </motion.p>
+      </section>
+
       {/* Smooth Hero Section */}
       <section
         className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
@@ -125,16 +219,15 @@ const deliveryItems = [
         }}
       >
         <div className="max-w-6xl mx-auto px-4 py-20 relative z-10 text-center">
-          <motion.h1
+          <motion.h2
             className="text-4xl md:text-5xl font-bold mb-4 text-white drop-shadow-lg"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Web Development by{" "}
-            <span style={{ color: YELLOW }}>Bytesolve</span>
-          </motion.h1>
+            Web Development by <span style={{ color: YELLOW }}>Bytesolve</span>
+          </motion.h2>
 
           <motion.p
             className="text-base max-w-2xl mx-auto text-white opacity-90"
@@ -143,7 +236,8 @@ const deliveryItems = [
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            Performance-driven Websites that convert visitors into loyal customers
+            Performance-driven Website Development that converts visitors into
+            loyal customers
           </motion.p>
         </div>
       </section>
@@ -219,7 +313,8 @@ const deliveryItems = [
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            💡 How <span style={{ color: ACCENT }}>Bytesolve</span> Delivers
+            💡 How <span style={{ color: ACCENT }}>Bytesolve</span> Delivers Web
+            Development
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6 items-center">
@@ -268,7 +363,7 @@ const deliveryItems = [
               >
                 <Image
                   src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"
-                  alt="Development"
+                  alt="Website Development Process"
                   width={500}
                   height={300}
                   className="rounded-xl shadow-lg w-full"
@@ -290,7 +385,7 @@ const deliveryItems = [
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
-          🌐 What We Build
+          🌐 Professional Website Development Services
         </motion.h2>
 
         <motion.div
@@ -362,7 +457,7 @@ const deliveryItems = [
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
           >
-            🚀 Why Your Brand Needs a Website
+            🚀 Why Your Business Needs Professional Website Development
           </motion.h2>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -411,11 +506,12 @@ const deliveryItems = [
               className="flex flex-col justify-center"
             >
               <h3 className="font-bold text-lg mb-2" style={{ color: ACCENT }}>
-                Your Growth Partner
+                Your Web Development Partner
               </h3>
               <p className="text-sm mb-4" style={{ color: `${PRIMARY}cc` }}>
-                From planning to analytics integration, we build growth engines
-                that truly work for your business.
+                From strategic planning to analytics integration, we build
+                growth engines through professional website development that
+                truly works for your business.
               </p>
 
               <motion.button
@@ -435,10 +531,43 @@ const deliveryItems = [
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                Get Your Website Built →
+                Start Your Website Development Project →
               </motion.button>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section for Rich Snippets */}
+      <section className="max-w-4xl mx-auto px-4 py-12 bg-white">
+        <motion.h2
+          className="text-2xl font-bold text-center mb-8"
+          style={{ color: PRIMARY }}
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
+          ❓ Website Development FAQs
+        </motion.h2>
+        <div className="space-y-4">
+          {faqItems.map((faq, index) => (
+            <motion.div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-sm border border-gray-100"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="font-bold mb-2 text-lg" style={{ color: ACCENT }}>
+                {faq.q}
+              </h3>
+              <p className="text-gray-700" style={{ color: PRIMARY }}>
+                {faq.a}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -455,10 +584,13 @@ const deliveryItems = [
         >
           <p className="font-bold text-lg mb-1">
             Bytesolve —{" "}
-            <span style={{ color: YELLOW }}>Building Digital Futures</span>
+            <span style={{ color: YELLOW }}>
+              Professional Website Development
+            </span>
           </p>
           <p className="text-xs opacity-75">
-            Empowering businesses with websites that perform, engage, and grow
+            Empowering businesses with custom website development that performs,
+            engages, and grows
           </p>
         </motion.div>
       </footer>

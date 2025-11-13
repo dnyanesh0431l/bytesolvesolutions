@@ -33,25 +33,29 @@ export default function SalonSoftVideo() {
         <source src="/Videos/salonsoft.mp4" type="video/mp4" />
       </video>
 
-      {/* 🌫 Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-[#b30101]/10 to-black/80 -z-10" />
+      {/* 🌫 Brand Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a]/70 via-black/60 to-black/90 -z-10" />
 
       {/* 🧭 Hero Content */}
-      <div className="flex flex-col justify-center items-center h-full text-center px-6">
+      <div className="flex flex-col justify-center items-center h-full text-center px-6 backdrop-blur-[1px]">
         {/* 🔹 Title */}
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl md:text-6xl font-extrabold mb-12 leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]"
+          className="text-3xl md:text-6xl font-extrabold mb-6 leading-tight"
         >
-          <span className="text-white  [-webkit-text-stroke:1px_#b30101]">
+          <span className="text-[#f8fafc] drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
             Salon Management Software
           </span>{" "}
-          <span className="text-[#b30101]  [-webkit-text-stroke:1px_white] italic">
-            – Salonbyte
+          <br />
+          <span className="text-[#b30101] italic font-serif drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+            — Salonbyte
           </span>
         </motion.h1>
+
+        {/* ✨ Divider */}
+        <div className="w-24 h-[3px] bg-gradient-to-r from-[#b30101] via-[#fbbf24] to-[#b30101] rounded-full mb-10" />
 
         {/* 🔹 Animated Slides */}
         <div className="relative h-32 md:h-40 flex flex-col justify-center">
@@ -64,10 +68,10 @@ export default function SalonSoftVideo() {
               transition={{ duration: 0.8, ease: "easeInOut" }}
               className="space-y-4"
             >
-              <h2 className="text-2xl md:text-4xl font-semibold text-[#ffffff] ">
+              <h2 className="text-2xl md:text-4xl font-semibold text-[#f8fafc]">
                 {slides[index][0]}
               </h2>
-              <h3 className="text-xl md:text-2xl text-[#f8fafc] font-medium italic opacity-90">
+              <h3 className="text-lg md:text-2xl text-[#e2e8f0] font-light italic opacity-90">
                 {slides[index][1]}
               </h3>
             </motion.div>
@@ -79,8 +83,10 @@ export default function SalonSoftVideo() {
           {slides.map((_, i) => (
             <motion.div
               key={i}
-              className={`h-2 w-2 rounded-full transition-all duration-500 ${
-                i === index ? "bg-[#fbbf24] scale-125" : "bg-white/30"
+              className={`h-3 w-3 rounded-full transition-all duration-500 ${
+                i === index
+                  ? "bg-[#fbbf24] shadow-[0_0_10px_#fbbf24]"
+                  : "bg-white/30"
               }`}
               animate={{
                 scale: i === index ? 1.3 : 1,
@@ -92,7 +98,7 @@ export default function SalonSoftVideo() {
       </div>
 
       {/* ✨ Bottom Glow Accent */}
-      <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#b30101]/30 via-transparent to-transparent blur-xl pointer-events-none" />
+      <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#1e3a8a]/30 via-transparent to-transparent blur-xl pointer-events-none" />
     </div>
   );
 }

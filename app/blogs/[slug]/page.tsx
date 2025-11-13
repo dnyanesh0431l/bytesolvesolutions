@@ -77,9 +77,7 @@ export async function generateMetadata({
   return {
     title: seo.metaTitle || `${data.title} | Bytesolve Solutions`,
     description:
-      seo.metaDescription ||
-      data.excerpt ||
-      data.description?.slice(0, 160),
+      seo.metaDescription || data.excerpt || data.description?.slice(0, 160),
     keywords: seo.keywords,
     alternates: {
       canonical: seo.canonicalUrl || `${baseUrl}/blogs/${slug}`,
